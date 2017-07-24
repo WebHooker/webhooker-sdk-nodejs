@@ -1,0 +1,564 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>API Reference · Webhooker Client SDK</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="api.html" />
+    
+    
+    <link rel="prev" href="guides/subscriptions.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    Guides
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="guides/sending.html">
+            
+                <a href="guides/sending.html">
+            
+                    
+                    Sending a Message
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="guides/subscriptions.html">
+            
+                <a href="guides/subscriptions.html">
+            
+                    
+                    Creating Subscriptions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="api.html">
+            
+                <a href="api.html#WebhookerClient">
+            
+                    
+                    WebhookerClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="api.html">
+            
+                <a href="api.html#Config">
+            
+                    
+                    Config
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="api.html">
+            
+                <a href="api.html#Message">
+            
+                    
+                    Message
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >API Reference</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="classes">Classes</h2>
+<dl>
+<dt><a href="#WebhookerClient">WebhookerClient</a></dt>
+<dd></dd>
+<dt><a href="#Config">Config</a></dt>
+<dd></dd>
+<dt><a href="#Message">Message</a></dt>
+<dd></dd>
+</dl>
+
+<p><br><br><br>
+<a id="WebhookerClient"></a></p>
+<h2 id="webhookerclient">WebhookerClient</h2>
+<p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#WebhookerClient">WebhookerClient</a><ul>
+<li><a href="#new_WebhookerClient_new">new WebhookerClient(apiKey)</a></li>
+<li><a href="#WebhookerClient.withKey">.withKey(apiKey)</a></li>
+</ul>
+</li>
+</ul>
+<p><br><br><br>
+<a id="new_WebhookerClient_new"></a></p>
+<h3 id="new-webhookerclientapikey">new WebhookerClient(apiKey)</h3>
+<p>Create a new Webhooker client.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="WebhookerClient.withKey"></a></p>
+<h3 id="webhookerclientwithkeyapikey">WebhookerClient.withKey(apiKey)</h3>
+<p>Create a new Webhooker client with default parameters and the specified
+api key</p>
+<p><strong>Kind</strong>: static method of <a href="#WebhookerClient"><code>WebhookerClient</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Config"></a></p>
+<h2 id="config">Config</h2>
+<p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#Config">Config</a><ul>
+<li><a href="#new_Config_new">new Config(apiKey, domain)</a></li>
+<li><a href="#Config.withKey">.withKey(apiKey)</a></li>
+</ul>
+</li>
+</ul>
+<p><br><br><br>
+<a id="new_Config_new"></a></p>
+<h3 id="new-configapikey-domain">new Config(apiKey, domain)</h3>
+<p>Create a new configuration object</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+<td>The api key to send with webhooker requests</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>The domain name to send webhooker requests to</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Config.withKey"></a></p>
+<h3 id="configwithkeyapikey">Config.withKey(apiKey)</h3>
+<p>Create a new configuration object with the default webhooker domain</p>
+<p><strong>Kind</strong>: static method of <a href="#Config"><code>Config</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+<td>The api key to send with webhooker requests</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message"></a></p>
+<h2 id="message">Message</h2>
+<p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#Message">Message</a><ul>
+<li><a href="#new_Message_new">new Message(id, tenant, type, payloads, recipients)</a></li>
+<li><a href="#Message.from">.from(params)</a></li>
+</ul>
+</li>
+</ul>
+<p><br><br><br>
+<a id="new_Message_new"></a></p>
+<h3 id="new-messageid-tenant-type-payloads-recipients">new Message(id, tenant, type, payloads, recipients)</h3>
+<p>Create a new message</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>The message identifier. Can be null for unsent messages</td>
+</tr>
+<tr>
+<td>tenant</td>
+<td>string</td>
+<td>The tenant key that will be used to filter this  message</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>The event name/type that this message  will be sent as</td>
+</tr>
+<tr>
+<td>payloads</td>
+<td>object</td>
+<td>An object containing the payloads to send</td>
+</tr>
+<tr>
+<td>payloads.json</td>
+<td>string / object</td>
+<td>The string encoded json body, or  an object to be serialised</td>
+</tr>
+<tr>
+<td>[payloads.xml]</td>
+<td>string</td>
+<td>The string encoded xml body</td>
+</tr>
+<tr>
+<td>recipients</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message.from"></a></p>
+<h3 id="messagefromparams">Message.from(params)</h3>
+<p>Hydrate a new unsent message from the provided portable object</p>
+<p><strong>Kind</strong>: static method of <a href="#Message"><code>Message</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>params</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>params.tenant</td>
+<td>string</td>
+<td>The tenant key that will be used to filter this message</td>
+</tr>
+<tr>
+<td>params.type</td>
+<td>string</td>
+<td>The event name/type that this message will be sent as</td>
+</tr>
+<tr>
+<td>params.payloads</td>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>[params.payloads.json]</td>
+<td>string</td>
+<td>The string encoded json body</td>
+</tr>
+<tr>
+<td>[params.payloads.xml]</td>
+<td>string</td>
+<td>The string encoded xml body</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="guides/subscriptions.html" class="navigation navigation-prev " aria-label="Previous page: Creating Subscriptions">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="api.html#WebhookerClient" class="navigation navigation-next " aria-label="Next page: WebhookerClient">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"WebhookerClient","level":"3.1.1","depth":2,"anchor":"#WebhookerClient","path":"api.md","ref":"api.md#WebhookerClient","articles":[]},"previous":{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"api.md","mtime":"2017-07-24T15:16:32.075Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-24T15:16:35.135Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

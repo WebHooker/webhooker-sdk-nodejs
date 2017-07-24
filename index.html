@@ -1,0 +1,362 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Getting Started · Webhooker Client SDK</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Getting Started
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" >
+            
+                <span>
+            
+                    
+                    Guides
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="guides/sending.html">
+            
+                <a href="guides/sending.html">
+            
+                    
+                    Sending a Message
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="guides/subscriptions.html">
+            
+                <a href="guides/subscriptions.html">
+            
+                    
+                    Creating Subscriptions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="api.html">
+            
+                <a href="api.html">
+            
+                    
+                    API Reference
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="api.html">
+            
+                <a href="api.html#WebhookerClient">
+            
+                    
+                    WebhookerClient
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="api.html">
+            
+                <a href="api.html#Config">
+            
+                    
+                    Config
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="api.html">
+            
+                <a href="api.html#Message">
+            
+                    
+                    Message
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Getting Started</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="getting-started">Getting Started</h1>
+<p>This module provides a complete client for interacting with your <a href="https://webhooker.io" target="_blank">Webhooker</a> applications. All you need is a little bit of setup and a single function call to simplify your webhook distribution architecture.</p>
+<p>The Webhooker client is requires nodejs version 4 or later. It should also be browserify compatible, but this it is generally not recommended as this <em>will</em> leak your Webhooker API key.</p>
+<h2 id="installation">Installation</h2>
+<p>Use your favourite package manager to install the client. No extra setup is required</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># npm</span>
+npm install --save webhooker-client
+
+<span class="hljs-comment"># ied</span>
+ied install --save webhooker-client
+
+<span class="hljs-comment"># yarn</span>
+yarn add webhooker-client
+</code></pre>
+<h2 id="usage">Usage</h2>
+<p>Utilising the client in your code is quite simple. You&apos;ll need to replace <code>&lt;API_KEY&gt;</code> in the following code with the api key available on your application page in the Webhooker interface.</p>
+<p>This example shows off the fluent builder interface for messages and passing a callback to the <code>Client#send</code> method. See <a href="Message.md">Sending a Message</a> for more ways of creating a message, and information about the promise interface for sending messages.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { WebhookerClient, Message } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webhooker-client&apos;</span>)
+
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> WebhookerClient(<span class="hljs-string">&apos;&lt;API_KEY&gt;&apos;</span>)
+
+<span class="hljs-keyword">const</span> message = Message
+    .event(<span class="hljs-string">&apos;my-event&apos;</span>)
+    .tenant(<span class="hljs-string">&apos;fkey-213&apos;</span>)
+    .json({ name: <span class="hljs-string">&apos;foo&apos;</span>, value: <span class="hljs-number">123</span> })
+    .create()
+
+client.send(message, (err, m) =&gt; { <span class="hljs-comment">// (message === m)</span>
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-built_in">console</span>.error(err)
+    <span class="hljs-keyword">else</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Sent message&apos;</span>, m.id)
+})
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Getting Started","level":"1.1","depth":1,"next":{"title":"Guides","level":"2.1","depth":1,"ref":"","articles":[{"title":"Sending a Message","level":"2.1.1","depth":2,"path":"guides/sending.md","ref":"guides/sending.md","articles":[]},{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"start.md","mtime":"2017-07-24T15:16:05.830Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-24T15:16:35.135Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
