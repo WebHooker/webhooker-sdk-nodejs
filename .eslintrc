@@ -1,0 +1,10 @@
+{
+	"extends": "esnext",
+	"rules": {
+		"eqeqeq": ["error", "smart"],
+		"prefer-spread": "off",
+		"object-shorthand": "off",
+		"import/no-commonjs": "off",
+		"import/no-nodejs-modules": "off"
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"gitbook": "3.2.2",
+	"root": "./docs",
+	"title": "Webhooker Client SDK",
+	"structure": { 
+		"readme": "start.md",
+		"summary": "toc.md" 
+	},
+	"plugins": [
+		"-sharing",
+		"-livereload"
+	]
+}

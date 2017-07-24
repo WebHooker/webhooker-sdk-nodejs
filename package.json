@@ -1,0 +1,31 @@
+{
+  "name": "webhooker-client",
+  "version": "1.0.0",
+  "description": "Simplify your webhook distribution infrastructure to a single line of code",
+  "main": "index.js",
+  "repository": "https://github.com/WebHooker/webhooker-sdk-nodejs",
+  "author": "Louis Capitanchik <louis@radweb.co.uk>",
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint lib",
+    "docs:bundle": "jsdoc2md --files lib/*.js --partial docs/overrides/partials/header.hbs --partial docs/overrides/partials/link.hbs --partial docs/overrides/partials/params-table.hbs > docs/api.md",
+    "docs:install": "gitbook install",
+    "docs:build": "npm run docs:bundle && npm run docs:install && gitbook build",
+    "docs:serve": "npm run docs:build && gitbook serve",
+    "docs:publish": "npm run docs:build && gh-pages --dist _book"
+  },
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-esnext": "^1.6.0",
+    "gh-pages": "^1.0.0",
+    "gitbook-cli": "^2.3.2",
+    "jsdoc-to-markdown": "^3.0.0",
+    "mocha": "^3.4.2",
+    "nock": "^9.0.14"
+  }
+}
