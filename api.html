@@ -411,8 +411,6 @@ keys matching the one specified with the API request</p>
 <li><a href="#new_WebhookerClient_new">new WebhookerClient(config)</a></li>
 <li><em>instance</em><ul>
 <li><a href="#WebhookerClient+send">.send(message, [callback])</a> &#x21D2; Promise</li>
-<li><a href="#WebhookerClient+getSubscribers">.getSubscribers([callback])</a> &#x21D2; Promise</li>
-<li><a href="#WebhookerClient+getSubscriptions">.getSubscriptions([callback])</a> &#x21D2; Promise</li>
 </ul>
 </li>
 <li><em>static</em><ul>
@@ -469,45 +467,6 @@ when <code>callback</code> is null or undefined  </p>
 <td>[callback]</td>
 <td><a href="#WebhookerCallback"><code>WebhookerCallback</code></a></td>
 <td>A callback that will be triggered when the request has completed. If this is omitted, the function will instead return a promise</td>
-</tr>
-</tbody>
-</table>
-<p><br><br><br>
-<a id="WebhookerClient+getSubscribers"></a></p>
-<h3 id="webhookerclientgetsubscriberscallback-&#x21D2;-promise">webhookerClient.getSubscribers([callback]) &#x21D2; Promise</h3>
-<p>Get all of the subscribers for this application</p>
-<p><strong>Kind</strong>: instance method of <a href="#WebhookerClient"><code>WebhookerClient</code></a>  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[callback]</td>
-<td><a href="#WebhookerCallback"><code>WebhookerCallback</code></a></td>
-</tr>
-</tbody>
-</table>
-<p><br><br><br>
-<a id="WebhookerClient+getSubscriptions"></a></p>
-<h3 id="webhookerclientgetsubscriptionscallback-&#x21D2;-promise">webhookerClient.getSubscriptions([callback]) &#x21D2; Promise</h3>
-<p>Get all of the subscriptions for a subscriber belonging to this 
-application</p>
-<p><strong>Kind</strong>: instance method of <a href="#WebhookerClient"><code>WebhookerClient</code></a>  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[callback]</td>
-<td><a href="#WebhookerCallback"><code>WebhookerCallback</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -632,7 +591,7 @@ api key</p>
 <tbody>
 <tr>
 <td>id</td>
-<td>int / null</td>
+<td>string / null</td>
 <td></td>
 <td>The message identifier. Can be null for unsent messages</td>
 </tr>
@@ -689,7 +648,7 @@ api key</p>
 <tbody>
 <tr>
 <td>id</td>
-<td>int / null</td>
+<td>string / null</td>
 <td>The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance</td>
 </tr>
 </tbody>
@@ -976,7 +935,7 @@ Webhooker HTTP api spec<br><br><br><br>
 <tbody>
 <tr>
 <td>id</td>
-<td>int / null</td>
+<td>string / null</td>
 <td>The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance</td>
 </tr>
 </tbody>
@@ -1234,7 +1193,7 @@ keys matching the one specified with the API request</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"Classes","level":"3.2","depth":1,"ref":"","articles":[{"title":"WebhookerClient","level":"3.2.1","depth":2,"anchor":"#WebhookerClient","path":"api.md","ref":"api.md#WebhookerClient","articles":[]},{"title":"Config","level":"3.2.2","depth":2,"anchor":"#Config","path":"api.md","ref":"api.md#Config","articles":[]},{"title":"Message","level":"3.2.3","depth":2,"anchor":"#Message","path":"api.md","ref":"api.md#Message","articles":[]},{"title":"SignedMessage","level":"3.2.4","depth":2,"anchor":"#SignedMessage","path":"api.md","ref":"api.md#SignedMessage","articles":[]}]},"previous":{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"api.md","mtime":"2017-07-25T13:35:30.054Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-25T12:26:25.230Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"Classes","level":"3.2","depth":1,"ref":"","articles":[{"title":"WebhookerClient","level":"3.2.1","depth":2,"anchor":"#WebhookerClient","path":"api.md","ref":"api.md#WebhookerClient","articles":[]},{"title":"Config","level":"3.2.2","depth":2,"anchor":"#Config","path":"api.md","ref":"api.md#Config","articles":[]},{"title":"Message","level":"3.2.3","depth":2,"anchor":"#Message","path":"api.md","ref":"api.md#Message","articles":[]},{"title":"SignedMessage","level":"3.2.4","depth":2,"anchor":"#SignedMessage","path":"api.md","ref":"api.md#SignedMessage","articles":[]}]},"previous":{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"api.md","mtime":"2017-07-25T14:01:36.606Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-25T14:01:39.296Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
