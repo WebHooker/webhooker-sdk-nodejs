@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="subscriptions.html" />
+    <link rel="next" href="sending.html" />
     
     
 
@@ -132,18 +132,50 @@
             
 
             
-        </li>
+            <ul class="articles">
+                
     
-        <li class="chapter " data-level="2.1.2" data-path="subscriptions.html">
+        <li class="chapter " data-level="2.1.1.1" data-path="sending.html">
             
-                <a href="subscriptions.html">
+                <a href="sending.html#sending-a-simple-message">
             
                     
-                    Creating Subscriptions
+                    Simple Messages
             
                 </a>
             
 
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.2" data-path="sending.html">
+            
+                <a href="sending.html#building-our-message">
+            
+                    
+                    Building Messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.1.3" data-path="sending.html">
+            
+                <a href="sending.html#signing-the-message">
+            
+                    
+                    Signing Messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -360,7 +392,93 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="sending-a-message">Sending a Message</h1>
-<p>Here should be the guide on sending a message</p>
+<p>There are multiple ways to create a message, and multiple types of message that
+you can send. All of the different types follow the same basic conventions, and
+all messages get sent with the same method call on the client.</p>
+<h2 id="creating-a-client">Creating a Client</h2>
+<p>In order to do anything with the SDK, we first need a <code>WebhookerClient</code> object.
+As it is the main entry point to the SDK, it is provided as the default export
+of the module:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> WebhookerClient = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;webhooker-client&apos;</span>)
+</code></pre>
+<p>All we need to create a default client is the API key that can be found on the
+application page of the webhooker dashboard. For these examples, we&apos;ll be using
+<code>abc-123-blt</code> - replace every instance of that with your API key if you&apos;re
+following along.</p>
+<p>To get an instance of the client with a specific API key, you just need to call
+the static <code>withKey</code> method:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> client = WebhookerClient.withKey(<span class="hljs-string">&apos;abc-213-blt&apos;</span>)
+</code></pre>
+<p>If you need a more complex configuration for your client, you can manually
+construct one by creating a <a href="../api.html#Config"><code>Config</code></a> object and passing that
+to the <code>WebhookerClient</code> constructor</p>
+<h2 id="sending-a-simple-message">Sending a Simple Message</h2>
+<p>If we want to really quickly send a simple message, we can pass a basic
+Javascript object directly to the client&apos;s <code>send</code> method. The object must 
+conform to the <a href="../api.html#MessageObject"><code>MessageObject</code></a> type, otherwise an
+<code>InvalidMessage</code> error will be thrown.</p>
+<p>Depending on whether or not you&apos;re using promises, you can either pass a
+callback to <code>send</code> or use the returned promise object. Here we&apos;ll use a promise
+since that gives us more flexibility:</p>
+<pre><code class="lang-js">client.send({
+    tenant: <span class="hljs-string">&apos;account.1&apos;</span>,
+    type: <span class="hljs-string">&apos;my-event&apos;</span>,
+    payloads: {
+        json: {
+            foo: <span class="hljs-number">123</span>,
+            bar: <span class="hljs-number">456</span>,
+        },
+    },
+})
+<span class="hljs-comment">// The client will always return a Message object, so you have to access values </span>
+<span class="hljs-comment">// via the `properties` property</span>
+.then(message =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Sent a message, it has id&apos;</span>, message.properties.id))
+.catch(err =&gt; <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&apos;Something went wrong:&apos;</span>, err))
+</code></pre>
+<h2 id="building-our-message">Building Our Message</h2>
+<p>An alternative method of creating a message is to use the fluent builder 
+interface. This interface allows you to construct message objects by chaining
+method calls - you can easily pass the message around and construct it in a way
+that gels better with your code base.</p>
+<p>Each of the properties that can be set on a message have a self-named method 
+that will set the value and then return the object for chaining. This code
+creates the same object as the previous example:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> Message = WebhookerClient.Message
+<span class="hljs-keyword">const</span> message = Message.builder()
+    .tenant(<span class="hljs-string">&apos;account.1&apos;</span>)
+    .type(<span class="hljs-string">&apos;my-event&apos;</span>)
+
+message.json({ foo: <span class="hljs-number">123</span>, bar: <span class="hljs-number">456</span> })
+</code></pre>
+<p>The message can then be sent as before with the <code>WebhookerClient</code>:</p>
+<pre><code class="lang-js">client.send(message)
+.then(m =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Sent a message, it has id&apos;</span>, m.properties.id))
+.catch(err =&gt; <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&apos;Something went wrong:&apos;</span>, err))
+</code></pre>
+<p>In this case, however, <code>message</code> is the same object as <code>m</code> since it is
+already a <a href="../api.html#Message"><code>Message</code></a> instance and doesn&apos;t need to be 
+converted</p>
+<h2 id="signing-the-message">Signing The Message</h2>
+<p>Webhooker has the option of including payload signatures in the message request
+so that the recipient can verify that the payload hasn&apos;t been tampered with.
+Doing this successfully requires a secret that is shared between you and the
+message recipient but <em>not</em> with Webhooker or anyone else.</p>
+<p>To help with this, the SDK provides the 
+<a href="../api.html#SignedMessage"><code>SignedMessage</code></a> class as an alternative to the 
+standard <code>Message</code>. It&apos;s used in the same way, but can also have a signing key
+and signing algorithm set on it, and it will automatically set the relevant 
+HMAC signatures on the request payload:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> SignedMessage = WebhookerClient.SignedMessage
+<span class="hljs-keyword">const</span> message = SignedMessage.builder()
+    .tenant(<span class="hljs-string">&apos;account.1&apos;</span>)
+    .type(<span class="hljs-string">&apos;my-event&apos;</span>)
+    .json({ foo: <span class="hljs-number">123</span>, bar: <span class="hljs-number">456</span> })
+    .signingKey(<span class="hljs-string">&apos;my super secret key&apos;</span>)
+
+client.send(message)
+.then(m =&gt; <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Sent a signed message, it has id&apos;</span>, m.properties.id))
+.catch(err =&gt; <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&apos;Something went wrong:&apos;</span>, err))
+</code></pre>
 
                                 
                                 </section>
@@ -389,7 +507,7 @@
             
                 
                 
-                <a href="subscriptions.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Creating Subscriptions">
+                <a href="sending.html#sending-a-simple-message" class="navigation navigation-next navigation-unique" aria-label="Next page: Simple Messages">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -400,7 +518,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Sending a Message","level":"2.1.1","depth":2,"next":{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]},"previous":{"title":"Guides","level":"2.1","depth":1,"ref":"","articles":[{"title":"Sending a Message","level":"2.1.1","depth":2,"path":"guides/sending.md","ref":"guides/sending.md","articles":[]},{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"guides/sending.md","mtime":"2017-07-24T15:16:05.830Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-25T14:01:39.296Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Sending a Message","level":"2.1.1","depth":2,"next":{"title":"Simple Messages","level":"2.1.1.1","depth":3,"anchor":"#sending-a-simple-message","path":"guides/sending.md","ref":"guides/sending.md#sending-a-simple-message","articles":[]},"previous":{"title":"Guides","level":"2.1","depth":1,"ref":"","articles":[{"title":"Sending a Message","level":"2.1.1","depth":2,"path":"guides/sending.md","ref":"guides/sending.md","articles":[{"title":"Simple Messages","level":"2.1.1.1","depth":3,"anchor":"#sending-a-simple-message","path":"guides/sending.md","ref":"guides/sending.md#sending-a-simple-message","articles":[]},{"title":"Building Messages","level":"2.1.1.2","depth":3,"anchor":"#building-our-message","path":"guides/sending.md","ref":"guides/sending.md#building-our-message","articles":[]},{"title":"Signing Messages","level":"2.1.1.3","depth":3,"anchor":"#signing-the-message","path":"guides/sending.md","ref":"guides/sending.md#signing-the-message","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"guides/sending.md","mtime":"2017-07-25T16:19:45.903Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-25T16:20:25.731Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
