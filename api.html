@@ -57,8 +57,6 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="api.html" />
-    
     
     <link rel="prev" href="guides/subscriptions.html" />
     
@@ -172,10 +170,23 @@
             
 
             
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    Classes
+            
+                </span>
+            
+
+            
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="3.1.1" data-path="api.html">
+        <li class="chapter " data-level="3.2.1" data-path="api.html">
             
                 <a href="api.html#WebhookerClient">
             
@@ -188,7 +199,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.2" data-path="api.html">
+        <li class="chapter " data-level="3.2.2" data-path="api.html">
             
                 <a href="api.html#Config">
             
@@ -201,12 +212,96 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.3" data-path="api.html">
+        <li class="chapter " data-level="3.2.3" data-path="api.html">
             
                 <a href="api.html#Message">
             
                     
                     Message
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.4" data-path="api.html">
+            
+                <a href="api.html#SignedMessage">
+            
+                    
+                    SignedMessage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" >
+            
+                <span>
+            
+                    
+                    Types
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="api.html">
+            
+                <a href="api.html#WebhookerCallback">
+            
+                    
+                    WebhookerCallback
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="api.html">
+            
+                <a href="api.html#MessageObject">
+            
+                    
+                    MessageObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="api.html">
+            
+                <a href="api.html#MessagePayload">
+            
+                    
+                    MessagePayload
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.4" data-path="api.html">
+            
+                <a href="api.html#TenantKey">
+            
+                    
+                    TenantKey
             
                 </a>
             
@@ -267,28 +362,121 @@
                                 <h2 id="classes">Classes</h2>
 <dl>
 <dt><a href="#WebhookerClient">WebhookerClient</a></dt>
-<dd></dd>
+<dd><p>The API client used to send requests to the webhooker api</p>
+</dd>
 <dt><a href="#Config">Config</a></dt>
 <dd></dd>
 <dt><a href="#Message">Message</a></dt>
-<dd></dd>
+<dd><p>Represents a message sent within the Webhooker system</p>
+</dd>
+<dt><a href="#SignedMessage">SignedMessage</a> &#x21D0; <a href="#Message">`Message`</a></dt>
+<dd><p>Represents a message within the webhooker system that should generate 
+signatures when sending to the API</p>
+</dd>
+</dl>
+
+<h2 id="typedefs">Typedefs</h2>
+<dl>
+<dt><a href="#WebhookerCallback">WebhookerCallback</a> : function</dt>
+<dd><p>The callback provided to methods that utilise the Webhooker api. When a 
+WebhookerCallback is accepted, it can instead be omitted to cause the called
+function to return a Promise</p>
+</dd>
+<dt><a href="#MessageObject">MessageObject</a> : Object</dt>
+<dd><p>An easily constructed version of the
+<a href="#MessagePayload">MessagePayload</a> object using a js-native naming scheme for
+payloads, as compared to the request body names. This type will usually be
+the one accepted by the public API, and MessagePayload will usually be the 
+type used internally</p>
+</dd>
+<dt><a href="#MessagePayload">MessagePayload</a> : Object</dt>
+<dd><p>The body parameters for a
+<a href="#WebhookerClient">WebhookerClient</a> send request</p>
+</dd>
+<dt><a href="#TenantKey">TenantKey</a> : string</dt>
+<dd><p>The non-unique user specified identifier for a
+single subsciption endpoint. Multiple subscriptions can have the same
+tenant key, and a request will be sent to all subscriptions that have tenant
+keys matching the one specified with the API request</p>
+</dd>
 </dl>
 
 <p><br><br><br>
 <a id="WebhookerClient"></a></p>
 <h2 id="webhookerclient">WebhookerClient</h2>
+<p>The API client used to send requests to the webhooker api</p>
 <p><strong>Kind</strong>: global class  </p>
 <ul>
 <li><a href="#WebhookerClient">WebhookerClient</a><ul>
-<li><a href="#new_WebhookerClient_new">new WebhookerClient(apiKey)</a></li>
+<li><a href="#new_WebhookerClient_new">new WebhookerClient(config)</a></li>
+<li><em>instance</em><ul>
+<li><a href="#WebhookerClient+send">.send(message, [callback])</a> &#x21D2; Promise</li>
+<li><a href="#WebhookerClient+getSubscribers">.getSubscribers([callback])</a> &#x21D2; Promise</li>
+<li><a href="#WebhookerClient+getSubscriptions">.getSubscriptions([callback])</a> &#x21D2; Promise</li>
+</ul>
+</li>
+<li><em>static</em><ul>
 <li><a href="#WebhookerClient.withKey">.withKey(apiKey)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p><br><br><br>
 <a id="new_WebhookerClient_new"></a></p>
-<h3 id="new-webhookerclientapikey">new WebhookerClient(apiKey)</h3>
+<h3 id="new-webhookerclientconfig">new WebhookerClient(config)</h3>
 <p>Create a new Webhooker client.</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config</td>
+<td><a href="#Config"><code>Config</code></a></td>
+<td>A config object that provides API information to the client. Can be used to customise the domain, in case it differs from the standard webhooker api</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="WebhookerClient+send"></a></p>
+<h3 id="webhookerclientsendmessage-callback-&#x21D2;-promise">webhookerClient.send(message, [callback]) &#x21D2; Promise</h3>
+<p>Send a message payload to Webhooker, which will then send the payload
+to the matching subscribers</p>
+<p><strong>Kind</strong>: instance method of <a href="#WebhookerClient"><code>WebhookerClient</code></a><br><strong>Returns</strong>: Promise - A promise that will resolve when the request has
+completed. If there was an error, the promise will be rejected. 
+Otherwise it will be resolved with the server response. Only returned
+when <code>callback</code> is null or undefined  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><a href="#Message"><code>Message</code></a> / <a href="#MessageObject"><code>MessageObject</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>[callback]</td>
+<td><a href="#WebhookerCallback"><code>WebhookerCallback</code></a></td>
+<td>A callback that will be triggered when the request has completed. If this is omitted, the function will instead return a promise</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="WebhookerClient+getSubscribers"></a></p>
+<h3 id="webhookerclientgetsubscriberscallback-&#x21D2;-promise">webhookerClient.getSubscribers([callback]) &#x21D2; Promise</h3>
+<p>Get all of the subscribers for this application</p>
+<p><strong>Kind</strong>: instance method of <a href="#WebhookerClient"><code>WebhookerClient</code></a>  </p>
 <table>
 <thead>
 <tr>
@@ -298,8 +486,28 @@
 </thead>
 <tbody>
 <tr>
-<td>apiKey</td>
-<td>string</td>
+<td>[callback]</td>
+<td><a href="#WebhookerCallback"><code>WebhookerCallback</code></a></td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="WebhookerClient+getSubscriptions"></a></p>
+<h3 id="webhookerclientgetsubscriptionscallback-&#x21D2;-promise">webhookerClient.getSubscriptions([callback]) &#x21D2; Promise</h3>
+<p>Get all of the subscriptions for a subscriber belonging to this 
+application</p>
+<p><strong>Kind</strong>: instance method of <a href="#WebhookerClient"><code>WebhookerClient</code></a>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[callback]</td>
+<td><a href="#WebhookerCallback"><code>WebhookerCallback</code></a></td>
 </tr>
 </tbody>
 </table>
@@ -383,18 +591,93 @@ api key</p>
 <p><br><br><br>
 <a id="Message"></a></p>
 <h2 id="message">Message</h2>
+<p>Represents a message sent within the Webhooker system</p>
 <p><strong>Kind</strong>: global class  </p>
 <ul>
 <li><a href="#Message">Message</a><ul>
-<li><a href="#new_Message_new">new Message(id, tenant, type, payloads, recipients)</a></li>
-<li><a href="#Message.from">.from(params)</a></li>
+<li><a href="#new_Message_new">new Message(id, tenant, type, payloads, [signatureType])</a></li>
+<li><em>instance</em><ul>
+<li><a href="#Message+id">.id(id)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+tenant">.tenant(tenant)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+type">.type(type)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+json">.json(json)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+xml">.xml(xml)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+isSent">.isSent()</a> &#x21D2; boolean</li>
+<li><a href="#Message+toPayload">.toPayload()</a> &#x21D2; <a href="#MessagePayload"><code>MessagePayload</code></a></li>
+</ul>
+</li>
+<li><em>static</em><ul>
+<li><a href="#Message.XML_KEY">.XML_KEY</a></li>
+<li><a href="#Message.JSON_KEY">.JSON_KEY</a></li>
+<li><a href="#Message.from">.from(params)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message.builder">.builder()</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <p><br><br><br>
 <a id="new_Message_new"></a></p>
-<h3 id="new-messageid-tenant-type-payloads-recipients">new Message(id, tenant, type, payloads, recipients)</h3>
+<h3 id="new-messageid-tenant-type-payloads-signaturetype">new Message(id, tenant, type, payloads, [signatureType])</h3>
 <p>Create a new message</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int / null</td>
+<td></td>
+<td>The message identifier. Can be null for unsent messages</td>
+</tr>
+<tr>
+<td>tenant</td>
+<td><a href="#TenantKey"><code>TenantKey</code></a></td>
+<td></td>
+<td>The tenant key that will be used to filter  this message</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td></td>
+<td>The event name/type that this message  will be sent as</td>
+</tr>
+<tr>
+<td>payloads</td>
+<td>Object</td>
+<td></td>
+<td>An object containing the payloads to send</td>
+</tr>
+<tr>
+<td>[payloads.json]</td>
+<td>string / Object / Array</td>
+<td></td>
+<td>The string encoded json body, or an object to be serialised</td>
+</tr>
+<tr>
+<td>[payloads.xml]</td>
+<td>string</td>
+<td></td>
+<td>The string encoded xml body</td>
+</tr>
+<tr>
+<td>[signatureType]</td>
+<td>string / false</td>
+<td><code>&quot;&apos;SHA256&apos;&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+id"></a></p>
+<h3 id="messageidid-&#x21D2;-message">message.id(id) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the id of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
 <table>
 <thead>
 <tr>
@@ -406,45 +689,121 @@ api key</p>
 <tbody>
 <tr>
 <td>id</td>
-<td>int</td>
-<td>The message identifier. Can be null for unsent messages</td>
-</tr>
-<tr>
-<td>tenant</td>
-<td>string</td>
-<td>The tenant key that will be used to filter this  message</td>
-</tr>
-<tr>
-<td>type</td>
-<td>string</td>
-<td>The event name/type that this message  will be sent as</td>
-</tr>
-<tr>
-<td>payloads</td>
-<td>object</td>
-<td>An object containing the payloads to send</td>
-</tr>
-<tr>
-<td>payloads.json</td>
-<td>string / object</td>
-<td>The string encoded json body, or  an object to be serialised</td>
-</tr>
-<tr>
-<td>[payloads.xml]</td>
-<td>string</td>
-<td>The string encoded xml body</td>
-</tr>
-<tr>
-<td>recipients</td>
-<td>string</td>
+<td>int / null</td>
+<td>The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance</td>
 </tr>
 </tbody>
 </table>
 <p><br><br><br>
+<a id="Message+tenant"></a></p>
+<h3 id="messagetenanttenant-&#x21D2;-message">message.tenant(tenant) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the tenant key of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td><a href="#TenantKey"><code>TenantKey</code></a></td>
+<td>The user defined subscription identifier that that this message will be sent to</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+type"></a></p>
+<h3 id="messagetypetype-&#x21D2;-message">message.type(type) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the type of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>The event name that will be sent with this message (e.g. task.created or my-system-notification)</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+json"></a></p>
+<h3 id="messagejsonjson-&#x21D2;-message">message.json(json) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the JSON payload of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string / Object / Array</td>
+<td>A JSON compatible payload to be sent. This can either be something that will stringify (Object or Array) or it can be a pre-stringified payload.</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+xml"></a></p>
+<h3 id="messagexmlxml-&#x21D2;-message">message.xml(xml) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the XML payload of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xml</td>
+<td>string</td>
+<td>An XML string taht will be sent as the payload of  this message</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+isSent"></a></p>
+<h3 id="messageissent-&#x21D2;-boolean">message.isSent() &#x21D2; boolean</h3>
+<p>Check to see if this message has been succesfully sent</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: boolean - whether or not this message has been sent, as
+indicated by the existence of an ID. If an ID has been manually set on
+an unsent message, this method will falsly report that the message has
+been sent - only sent messages should have an ID<br><br><br><br>
+<a id="Message+toPayload"></a></p>
+<h3 id="messagetopayload-&#x21D2;-messagepayload">message.toPayload() &#x21D2; <a href="#MessagePayload"><code>MessagePayload</code></a></h3>
+<p>Turns this message into a raw payload object that can be used as the
+body of a <a href="WebhookClient">WebhookClient</a> send request</p>
+<p><strong>Kind</strong>: instance method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#MessagePayload"><code>MessagePayload</code></a> - The formatted payload that conforms to the
+Webhooker HTTP api spec<br><br><br><br>
+<a id="Message.XML_KEY"></a></p>
+<h3 id="messagexmlkey">Message.XML_KEY</h3>
+<p>The key used for the stringified XML body in the request payload</p>
+<p><strong>Kind</strong>: static property of <a href="#Message"><code>Message</code></a><br><br><br><br>
+<a id="Message.JSON_KEY"></a></p>
+<h3 id="messagejsonkey">Message.JSON_KEY</h3>
+<p>The key used for the stringified JSON body in the request payload</p>
+<p><strong>Kind</strong>: static property of <a href="#Message"><code>Message</code></a><br><br><br><br>
 <a id="Message.from"></a></p>
-<h3 id="messagefromparams">Message.from(params)</h3>
+<h3 id="messagefromparams-&#x21D2;-message">Message.from(params) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
 <p>Hydrate a new unsent message from the provided portable object</p>
-<p><strong>Kind</strong>: static method of <a href="#Message"><code>Message</code></a>  </p>
+<p><strong>Kind</strong>: static method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - The Message instance that represents the provided object  </p>
 <table>
 <thead>
 <tr>
@@ -456,36 +815,386 @@ api key</p>
 <tbody>
 <tr>
 <td>params</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>params.tenant</td>
-<td>string</td>
-<td>The tenant key that will be used to filter this message</td>
-</tr>
-<tr>
-<td>params.type</td>
-<td>string</td>
-<td>The event name/type that this message will be sent as</td>
-</tr>
-<tr>
-<td>params.payloads</td>
-<td>object</td>
-<td></td>
-</tr>
-<tr>
-<td>[params.payloads.json]</td>
-<td>string</td>
-<td>The string encoded json body</td>
-</tr>
-<tr>
-<td>[params.payloads.xml]</td>
-<td>string</td>
-<td>The string encoded xml body</td>
+<td><a href="#MessageObject"><code>MessageObject</code></a></td>
+<td>The basic object containing message parameters</td>
 </tr>
 </tbody>
 </table>
+<p><br><br><br>
+<a id="Message.builder"></a></p>
+<h3 id="messagebuilder-&#x21D2;-message">Message.builder() &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Create a new blank <a href="#Message">Message</a> as a builder interface. The message
+will have no defaults set, and by default will not create signatures</p>
+<p><strong>Kind</strong>: static method of <a href="#Message"><code>Message</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - A blank message with no properties. Will not pass 
+validation by default unless values are set on it<br><br><br><br>
+<a id="SignedMessage"></a></p>
+<h2 id="signedmessage-&#x21D0;-message">SignedMessage &#x21D0; <a href="#Message"><code>Message</code></a></h2>
+<p>Represents a message within the webhooker system that should generate 
+signatures when sending to the API</p>
+<p><strong>Kind</strong>: global class<br><strong>Extends</strong>: <a href="#Message"><code>Message</code></a>  </p>
+<ul>
+<li><a href="#SignedMessage">SignedMessage</a> &#x21D0; <a href="#Message"><code>Message</code></a><ul>
+<li><a href="#new_SignedMessage_new">new SignedMessage(id, tenant, type, payloads, [signingKey], [signingAlgo])</a></li>
+<li><a href="#SignedMessage+signingKey">.signingKey(signingKey)</a> &#x21D2; <a href="#SignedMessage"><code>SignedMessage</code></a></li>
+<li><a href="#SignedMessage+signingHash">.signingHash(signingAlgo)</a> &#x21D2; <a href="#SignedMessage"><code>SignedMessage</code></a></li>
+<li><a href="#SignedMessage+toPayload">.toPayload()</a> &#x21D2; <a href="#MessagePayload"><code>MessagePayload</code></a></li>
+<li><a href="#Message+id">.id(id)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+tenant">.tenant(tenant)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+type">.type(type)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+json">.json(json)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+xml">.xml(xml)</a> &#x21D2; <a href="#Message"><code>Message</code></a></li>
+<li><a href="#Message+isSent">.isSent()</a> &#x21D2; boolean</li>
+</ul>
+</li>
+</ul>
+<p><br><br><br>
+<a id="new_SignedMessage_new"></a></p>
+<h3 id="new-signedmessageid-tenant-type-payloads-signingkey-signingalgo">new SignedMessage(id, tenant, type, payloads, [signingKey], [signingAlgo])</h3>
+<p>Create a new SignedMessage</p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int / null</td>
+<td></td>
+<td>The message identifier. Can be null for unsent messages</td>
+</tr>
+<tr>
+<td>tenant</td>
+<td><a href="#TenantKey"><code>TenantKey</code></a></td>
+<td></td>
+<td>The tenant key that will be used to filter  this message</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td></td>
+<td>The event name/type that this message  will be sent as</td>
+</tr>
+<tr>
+<td>payloads</td>
+<td>Object</td>
+<td></td>
+<td>An object containing the payloads to send</td>
+</tr>
+<tr>
+<td>[payloads.json]</td>
+<td>string / Object / Array</td>
+<td></td>
+<td>The string encoded  json body, or an object to be serialised</td>
+</tr>
+<tr>
+<td>[payloads.xml]</td>
+<td>string</td>
+<td></td>
+<td>The string encoded xml body</td>
+</tr>
+<tr>
+<td>[signingKey]</td>
+<td>string</td>
+<td></td>
+<td>The key used to sign the payloads. This should be something known to the recipient so that they can verify that the payload has not been tampered with. It is recommended that this value is also not related to your Webhooker account in any way</td>
+</tr>
+<tr>
+<td>[signingAlgo]</td>
+<td>string</td>
+<td><code>&quot;sha256&quot;</code></td>
+<td>The algorithm to use when creating message signatures. Will default to a sha-256 signature. If an explicit false is passed as this parameter, no signatures will be created</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="SignedMessage+signingKey"></a></p>
+<h3 id="signedmessagesigningkeysigningkey-&#x21D2;-signedmessage">signedMessage.signingKey(signingKey) &#x21D2; <a href="#SignedMessage"><code>SignedMessage</code></a></h3>
+<p>Fluently set the key used to sign the request payloads</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#SignedMessage"><code>SignedMessage</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signingKey</td>
+<td>string</td>
+<td>The key used to sign request payloads. It is recommended that this value is also not related to your Webhooker account in any way</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="SignedMessage+signingHash"></a></p>
+<h3 id="signedmessagesigninghashsigningalgo-&#x21D2;-signedmessage">signedMessage.signingHash(signingAlgo) &#x21D2; <a href="#SignedMessage"><code>SignedMessage</code></a></h3>
+<p>Fluently set the algorithm used to sign the request payloads</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#SignedMessage"><code>SignedMessage</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signingAlgo</td>
+<td>string</td>
+<td>The algorithm used to create the HMAC signature. It should be a value found in crypto.getHashes()</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="SignedMessage+toPayload"></a></p>
+<h3 id="signedmessagetopayload-&#x21D2;-messagepayload">signedMessage.toPayload() &#x21D2; <a href="#MessagePayload"><code>MessagePayload</code></a></h3>
+<p>Turns this message into a raw payload object that can be used as the
+body of a <a href="WebhookClient">WebhookClient</a> send request. Signatures will be
+generated for the json and xml payloads when present.</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Overrides</strong>: <a href="#Message+toPayload"><code>toPayload</code></a><br><strong>Returns</strong>: <a href="#MessagePayload"><code>MessagePayload</code></a> - The formatted payload that conforms to the
+Webhooker HTTP api spec<br><br><br><br>
+<a id="Message+id"></a></p>
+<h3 id="signedmessageidid-&#x21D2;-message">signedMessage.id(id) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the id of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int / null</td>
+<td>The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+tenant"></a></p>
+<h3 id="signedmessagetenanttenant-&#x21D2;-message">signedMessage.tenant(tenant) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the tenant key of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td><a href="#TenantKey"><code>TenantKey</code></a></td>
+<td>The user defined subscription identifier that that this message will be sent to</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+type"></a></p>
+<h3 id="signedmessagetypetype-&#x21D2;-message">signedMessage.type(type) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the type of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>The event name that will be sent with this message (e.g. task.created or my-system-notification)</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+json"></a></p>
+<h3 id="signedmessagejsonjson-&#x21D2;-message">signedMessage.json(json) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the JSON payload of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string / Object / Array</td>
+<td>A JSON compatible payload to be sent. This can either be something that will stringify (Object or Array) or it can be a pre-stringified payload.</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+xml"></a></p>
+<h3 id="signedmessagexmlxml-&#x21D2;-message">signedMessage.xml(xml) &#x21D2; <a href="#Message"><code>Message</code></a></h3>
+<p>Fluently set the XML payload of the message instance</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: <a href="#Message"><code>Message</code></a> - This message instance  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xml</td>
+<td>string</td>
+<td>An XML string taht will be sent as the payload of  this message</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="Message+isSent"></a></p>
+<h3 id="signedmessageissent-&#x21D2;-boolean">signedMessage.isSent() &#x21D2; boolean</h3>
+<p>Check to see if this message has been succesfully sent</p>
+<p><strong>Kind</strong>: instance method of <a href="#SignedMessage"><code>SignedMessage</code></a><br><strong>Returns</strong>: boolean - whether or not this message has been sent, as
+indicated by the existence of an ID. If an ID has been manually set on
+an unsent message, this method will falsly report that the message has
+been sent - only sent messages should have an ID<br><br><br><br>
+<a id="WebhookerCallback"></a></p>
+<h2 id="webhookercallback--function">WebhookerCallback : function</h2>
+<p>The callback provided to methods that utilise the Webhooker api. When a 
+WebhookerCallback is accepted, it can instead be omitted to cause the called
+function to return a Promise</p>
+<p><strong>Kind</strong>: global typedef  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>err</td>
+<td>Error</td>
+<td>If there was an error, this value will be the corresponding error object. Otherwise, it will be nul</td>
+</tr>
+<tr>
+<td>response</td>
+<td>Object</td>
+<td>The api response from webhooker. This will contain  different information depending on the request being made</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="MessageObject"></a></p>
+<h2 id="messageobject--object">MessageObject : Object</h2>
+<p>An easily constructed version of the
+<a href="#MessagePayload">MessagePayload</a> object using a js-native naming scheme for
+payloads, as compared to the request body names. This type will usually be
+the one accepted by the public API, and MessagePayload will usually be the 
+type used internally</p>
+<p><strong>Kind</strong>: global typedef<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td><a href="#TenantKey"><code>TenantKey</code></a></td>
+<td>The tenant key that will be used to filter this  message</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>The event name that the message will be sent as (e.g. task.created)</td>
+</tr>
+<tr>
+<td>payload</td>
+<td>Object</td>
+<td>A map of webhook message payload types to their respective stringified contents</td>
+</tr>
+<tr>
+<td>payload.json</td>
+<td>string</td>
+<td>A string encoded json payload</td>
+</tr>
+<tr>
+<td>payload.xml</td>
+<td>string</td>
+<td>A string encoded xml payload</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="MessagePayload"></a></p>
+<h2 id="messagepayload--object">MessagePayload : Object</h2>
+<p>The body parameters for a
+<a href="#WebhookerClient">WebhookerClient</a> send request</p>
+<p><strong>Kind</strong>: global typedef<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td><a href="#TenantKey"><code>TenantKey</code></a></td>
+<td>The tenant key that will be used to filter this message</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>The event name that the message will be sent as  (e.g. task.created)</td>
+</tr>
+<tr>
+<td>payload</td>
+<td>Object</td>
+<td>A mapping of MIME type to serialised payload. Valid MIME types include <code>application/json</code> and <code>application/xml</code></td>
+</tr>
+<tr>
+<td>payload.application/json</td>
+<td>string</td>
+<td>A string encoded json payload</td>
+</tr>
+<tr>
+<td>payload.application/xml</td>
+<td>string</td>
+<td>A string encoded xml payload</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br>
+<a id="TenantKey"></a></p>
+<h2 id="tenantkey--string">TenantKey : string</h2>
+<p>The non-unique user specified identifier for a
+single subsciption endpoint. Multiple subscriptions can have the same
+tenant key, and a request will be sent to all subscriptions that have tenant
+keys matching the one specified with the API request</p>
+<p><strong>Kind</strong>: global typedef  </p>
 
                                 
                                 </section>
@@ -513,14 +1222,10 @@ api key</p>
 
             
                 
-                <a href="guides/subscriptions.html" class="navigation navigation-prev " aria-label="Previous page: Creating Subscriptions">
+                <a href="guides/subscriptions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Creating Subscriptions">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="api.html#WebhookerClient" class="navigation navigation-next " aria-label="Next page: WebhookerClient">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -529,7 +1234,7 @@ api key</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"WebhookerClient","level":"3.1.1","depth":2,"anchor":"#WebhookerClient","path":"api.md","ref":"api.md#WebhookerClient","articles":[]},"previous":{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"api.md","mtime":"2017-07-24T15:16:32.075Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-24T15:16:35.135Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API Reference","level":"3.1","depth":1,"next":{"title":"Classes","level":"3.2","depth":1,"ref":"","articles":[{"title":"WebhookerClient","level":"3.2.1","depth":2,"anchor":"#WebhookerClient","path":"api.md","ref":"api.md#WebhookerClient","articles":[]},{"title":"Config","level":"3.2.2","depth":2,"anchor":"#Config","path":"api.md","ref":"api.md#Config","articles":[]},{"title":"Message","level":"3.2.3","depth":2,"anchor":"#Message","path":"api.md","ref":"api.md#Message","articles":[]},{"title":"SignedMessage","level":"3.2.4","depth":2,"anchor":"#SignedMessage","path":"api.md","ref":"api.md#SignedMessage","articles":[]}]},"previous":{"title":"Creating Subscriptions","level":"2.1.2","depth":2,"path":"guides/subscriptions.md","ref":"guides/subscriptions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-sharing","-livereload","livereload"],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"start.md","glossary":"GLOSSARY.md","summary":"toc.md"},"variables":{},"title":"Webhooker Client SDK","gitbook":"3.2.2"},"file":{"path":"api.md","mtime":"2017-07-25T13:35:30.054Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-25T12:26:25.230Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
