@@ -8,10 +8,11 @@
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint lib",
-    "docs:bundle": "jsdoc2md --files lib/*.js --partial docs/overrides/partials/header.hbs --partial docs/overrides/partials/link.hbs --partial docs/overrides/partials/params-table.hbs > docs/api.md",
+    "docs:bundle": "jsdoc2md --files lib/*.js --files index.js --partial docs/overrides/partials/header.hbs --partial docs/overrides/partials/link.hbs --partial docs/overrides/partials/params-table.hbs > docs/api.md",
     "docs:install": "gitbook install",
     "docs:build": "npm run docs:bundle && npm run docs:install && gitbook build",
-    "docs:serve": "npm run docs:build && gitbook serve",
+    "docs:watch": "watch -p \"lib/**/*.js\" -c \"npm run docs:bundle\"",
+    "docs:serve": "npm run docs:build && concurrently -k \"npm run docs:watch\"  \"gitbook serve\"",
     "docs:publish": "npm run docs:build && gh-pages --dist _book"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.0",
+    "concurrently": "^3.5.0",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-esnext": "^1.6.0",
@@ -26,6 +28,7 @@
     "gitbook-cli": "^2.3.2",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^3.4.2",
-    "nock": "^9.0.14"
+    "nock": "^9.0.14",
+    "watch-cli": "^0.2.2"
   }
 }

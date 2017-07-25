@@ -30,11 +30,10 @@ const { WebhookerClient, Message } = require('webhooker-client')
 
 const client = new WebhookerClient('<API_KEY>')
 
-const message = Message
+const message = Message.builder()
 	.event('my-event')
 	.tenant('fkey-213')
 	.json({ name: 'foo', value: 123 })
-	.create()
 
 client.send(message, (err, m) => { // (message === m)
 	if (err) console.error(err)
