@@ -6,7 +6,10 @@
 
 * Guides
   * [Sending a Message](/guides/sending.md)
-  * [Creating Subscriptions](/guides/subscriptions.md)
+    1. [Simple Messages](/guides/sending.md#sending-a-simple-message)
+	2. [Building Messages](/guides/sending.md#building-our-message)
+	3. [Signing Messages](/guides/sending.md#signing-the-message)
+<!--* [Creating Subscriptions](/guides/subscriptions.md)-->
 
 ---
 
