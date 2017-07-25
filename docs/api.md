@@ -54,8 +54,6 @@ The API client used to send requests to the webhooker api
     * [new WebhookerClient(config)](#new_WebhookerClient_new)
     * _instance_
         * [.send(message, [callback])](#WebhookerClient+send) ⇒ Promise
-        * [.getSubscribers([callback])](#WebhookerClient+getSubscribers) ⇒ Promise
-        * [.getSubscriptions([callback])](#WebhookerClient+getSubscriptions) ⇒ Promise
     * _static_
         * [.withKey(apiKey)](#WebhookerClient.withKey)
 
@@ -87,31 +85,6 @@ when `callback` is null or undefined
 | --- | --- | --- |
 | message | [`Message`](#Message) / [`MessageObject`](#MessageObject) |  |
 | [callback] | [`WebhookerCallback`](#WebhookerCallback) | A callback that will be triggered when the request has completed. If this is omitted, the function will instead return a promise |
-
-<br><br><br>
-<a id="WebhookerClient+getSubscribers"></a>
-
-### webhookerClient.getSubscribers([callback]) ⇒ Promise
-Get all of the subscribers for this application
-
-**Kind**: instance method of [`WebhookerClient`](#WebhookerClient)  
-
-| Param | Type |
-| --- | --- |
-| [callback] | [`WebhookerCallback`](#WebhookerCallback) | 
-
-<br><br><br>
-<a id="WebhookerClient+getSubscriptions"></a>
-
-### webhookerClient.getSubscriptions([callback]) ⇒ Promise
-Get all of the subscriptions for a subscriber belonging to this 
-application
-
-**Kind**: instance method of [`WebhookerClient`](#WebhookerClient)  
-
-| Param | Type |
-| --- | --- |
-| [callback] | [`WebhookerCallback`](#WebhookerCallback) | 
 
 <br><br><br>
 <a id="WebhookerClient.withKey"></a>
@@ -193,7 +166,7 @@ Create a new message
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| id | int / null |  | The message identifier. Can be null for unsent messages |
+| id | string / null |  | The message identifier. Can be null for unsent messages |
 | tenant | [`TenantKey`](#TenantKey) |  | The tenant key that will be used to filter  this message |
 | type | string |  | The event name/type that this message  will be sent as |
 | payloads | Object |  | An object containing the payloads to send |
@@ -212,7 +185,7 @@ Fluently set the id of the message instance
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | int / null | The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance |
+| id | string / null | The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance |
 
 <br><br><br>
 <a id="Message+tenant"></a>
@@ -413,7 +386,7 @@ Fluently set the id of the message instance
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | int / null | The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance |
+| id | string / null | The identifier of this message within the Webhooker system. This method should generally not be used outside of the SDK, but may prove useful for hydrating a serialised Message instance |
 
 <br><br><br>
 <a id="Message+tenant"></a>
