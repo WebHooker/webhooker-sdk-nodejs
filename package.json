@@ -12,7 +12,8 @@
     "docs:install": "gitbook install",
     "docs:build": "npm run docs:bundle && npm run docs:install && gitbook build",
     "docs:watch": "watch -p \"lib/**/*.js\" -c \"npm run docs:bundle\"",
-    "docs:serve": "npm run docs:build && concurrently -k \"npm run docs:watch\"  \"gitbook serve\"",
+	"docs:serve": "npm run docs:build && concurrently -k \"npm run docs:watch\"  \"gitbook serve\"",
+	"docs:readme": "cat docs/readme.md docs/api.md > README.md",
 	"docs:publish": "npm run docs:build && gh-pages --dist _book",
 	"tests:run": "mocha",
 	"tests:coverage": "istanbul cover _mocha"
