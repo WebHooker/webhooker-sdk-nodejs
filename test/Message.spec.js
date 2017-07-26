@@ -7,7 +7,7 @@ const basicParams = {
 	tenant: 'bar',
 	payloads: {
 		json: { foo: 123 },
-		xml: { }
+		xml: '<foo>123</foo>'
 	},
 }
 
@@ -46,7 +46,7 @@ describe('Messages', () => {
 
 			expect(message.properties.payloads).to.not.equal(basicParams.payloads)
 			expect(message.properties.payloads.json).to.not.equal(basicParams.payloads.json)
-			expect(message.properties.payloads.xml).to.not.equal(basicParams.payloads.xml)
+			expect(message.properties.payloads.xml).to.be.a('string')
 		})
 		it('should not store extraneous properties', () => {
 			const payload = Object.assign({ bar: 'invalid param' }, basicParams)
