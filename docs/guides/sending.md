@@ -99,8 +99,8 @@ message recipient but _not_ with Webhooker or anyone else.
 
 To help with this, the SDK provides the 
 [`SignedMessage`](/api.md#SignedMessage) class as an alternative to the 
-standard `Message`. It's used in the same way, but can also have a signing key
-and signing algorithm set on it, and it will automatically set the relevant 
+standard `Message`. It is used in the same way, but can also have a signing key
+and signing algorithm set on it. When sent, it will automatically set the relevant 
 HMAC signatures on the request payload:
 
 ```js
