@@ -13,7 +13,9 @@
     "docs:build": "npm run docs:bundle && npm run docs:install && gitbook build",
     "docs:watch": "watch -p \"lib/**/*.js\" -c \"npm run docs:bundle\"",
     "docs:serve": "npm run docs:build && concurrently -k \"npm run docs:watch\"  \"gitbook serve\"",
-    "docs:publish": "npm run docs:build && gh-pages --dist _book"
+	"docs:publish": "npm run docs:build && gh-pages --dist _book",
+	"tests:run": "mocha",
+	"tests:coverage": "istanbul cover _mocha"
   },
   "dependencies": {
     "request": "^2.81.0"
@@ -26,6 +28,7 @@
     "eslint-config-esnext": "^1.6.0",
     "gh-pages": "^1.0.0",
     "gitbook-cli": "^2.3.2",
+    "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^3.4.2",
     "nock": "^9.0.14",
